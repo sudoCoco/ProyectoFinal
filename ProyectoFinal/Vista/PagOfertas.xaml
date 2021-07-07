@@ -1,0 +1,77 @@
+﻿<Page x:Class="ProyectoFinal.Vista.PagOfertas"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProyectoFinal.Vista"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PagOfertas" Loaded="Page_Loaded">
+    <Page.Resources>
+        <CollectionViewSource x:Key="ofertasViewSource"/>
+    </Page.Resources>
+
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Label Content="Ofertas" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="300" Height="45" FontSize="24" Foreground="White" Background="#FF3A60B4"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="Empresa ID:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontWeight="Light" FontSize="17"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Título:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontWeight="Light" FontSize="17"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Descripción:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontWeight="Light" FontSize="17"/>
+            <Label Grid.Row="0" Grid.Column="2" Content="Puestos:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontWeight="Light" FontSize="17"/>
+            <Label Grid.Row="1" Grid.Column="2" Content="Fecha de Oferta:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontWeight="Light" FontSize="17"/>
+            <ComboBox Name="cbEmpresaID" Grid.Row="0" Grid.Column="1" Margin="10" IsEnabled="True" SelectedItem="{Binding EmpresaId}" SelectedIndex="0"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="10" Text="{Binding Titulo}" IsEnabled="False" Name="tbTitulo"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="10" Text="{Binding Descripcion}" IsEnabled="False" Name="tbDescripcion"/>
+            <TextBox Grid.Row="0" Grid.Column="3" Margin="10" Text="{Binding Puesto}" IsEnabled="False" Name="tbPuestos"/>
+            <DatePicker Name="dpFechaOferta" IsEnabled="False" Grid.Row="1" Grid.Column="3" Margin="10" VerticalAlignment="Center" SelectedDate="{Binding FechaOferta}"/>
+            <Button Name="btNuevaOferta" Content="Nuevo" Margin="10" Width="100" Grid.Row="3" Grid.Column="1" Background="#FF3A60B4" Foreground="#FFE6E6E6" Click="ClickNuevaOferta" />
+            <Button Name="btGuardarOferta" Content="Guardar" Margin="10" Width="100" Grid.Row="3" Grid.Column="2" Background="#FF3A60B4" Foreground="#FFE6E6E6" Click="ClickGuardarOferta" />
+        </Grid>
+        <Grid Grid.Row="2">
+            <DataGrid Name="dtOfertas" AutoGenerateColumns="False" Margin="10"
+                      ItemsSource="{Binding Source={StaticResource ofertasViewSource}}" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding OfertaId}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Empresa ID" Binding="{Binding EmpresaId}"/>
+                    <DataGridTextColumn Header="Título" Binding="{Binding Titulo}"/>
+                    <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" Width="2*"/>
+                    <DataGridTextColumn Header="Puestos" Binding="{Binding Puesto}" Width="SizeToHeader"/>
+                    <DataGridTextColumn Header="Fecha de Oferta" Binding="{Binding FechaOferta}"/>
+                    <DataGridTemplateColumn Header="Editar">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="btEditarOferta" Content="Editar" Click="ClickEditarOferta" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header=" Borrar">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="btBorrarOferta" Content="Borrar" Click="ClickBorrarOferta" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>                
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Page>

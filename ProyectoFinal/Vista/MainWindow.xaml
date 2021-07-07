@@ -1,0 +1,34 @@
+﻿<Window x:Class="ProyectoFinal.Vista.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinal"   
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1080" Loaded="Window_Loaded">
+    <Grid Background="LightGray">
+        <Grid Height="60" VerticalAlignment="Top" Background="#FF78A5E6">
+            <TextBlock Text="Agencia Colocaciones" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28"/>
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Ares-Infer" VerticalAlignment="Center" FontSize="18" Margin="10"/>
+                <Button x:Name="btSalir" Content="Salir"  Background="#FF3B80B8" Width="70" Height="40" Margin="10" Click="buttonSalirClick"/>
+            </StackPanel>
+        </Grid>
+        <Grid Width="150" HorizontalAlignment="Left" Background="#FF244793">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Categorías" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="60" Foreground="#FF1D2D64" Background="White" FontSize="20"/>
+                <Button Name="btAgencia" Height="60" Background="#FF3A60B4" Content="Agencia" FontSize="20" Foreground="#FFE6E6E6" Click="btClickAgencia"  />
+                <Button Name="btEmpresas" Height="60" Background="#FF3A60B4" Content="Empresas" FontSize="20" Foreground="#FFE6E6E6" Click="btClickEmpresas" />
+                <Button Name="btTrabajadores" Height="60" Background="#FF3A60B4" Content="Trabajadores" FontSize="20" Foreground="#FFE6E6E6" Click="btClickTrabajadores" />
+                <Button Name="btOfertas" Height="60" Background="#FF3A60B4" Content="Ofertas" FontSize="20" Foreground="#FFE6E6E6" Click="btClickOfertas" />
+                <Button Name="btOfertasEnviadas" Height="60" Background="#FF3A60B4" Content="Ofertas Enviadas" FontSize="20" Foreground="#FFE6E6E6"/>
+                <Button Name="btColocaciones" Height="60" Background="#FF3A60B4" Content="Colocaciones" FontSize="20" Foreground="#FFE6E6E6"/>
+                <Button Name="btConsultas" Height="60" Background="#FF3A60B4" Content="Consultas" FontSize="20" Foreground="#FFE6E6E6" Margin="0 20 0 10"/>
+            </StackPanel>
+        </Grid>
+        <Grid Margin="155,65,0,0">
+            <Frame x:Name="frPaginas" NavigationUIVisibility="Hidden"/>
+        </Grid>
+
+    </Grid>
+</Window>
